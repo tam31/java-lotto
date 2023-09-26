@@ -12,4 +12,8 @@ public class InputView {
         System.out.println(Lotto_NUMBER_MESSAGE);
     }
 
+    public static void bonesNumber(){
+        System.out.println(BONES_NUMBER_MESSAGE);
+    }
+
 }
