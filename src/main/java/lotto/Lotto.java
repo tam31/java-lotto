@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +8,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        limitNumberSize(numbers);
+        checkDuplicationNumber(numbers);
+        sortNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -39,5 +43,9 @@ public class Lotto {
         if(numbers.contains(number)){
             throw new IllegalArgumentException("[ERROR] 로또번호를 중복선택할 수 없습니다.");
         }
+    }
+
+    private void sortNumbers(List<Integer> numbers){
+        Collections.sort(numbers);
     }
 }
