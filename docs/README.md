@@ -57,7 +57,7 @@
 
 ### Controller
 1. LottoController
-- [] 게임 시작 
+- [x] 게임 시작 
 
 ### Validation(데이터 유효성 검사)
 1. DataValidation
