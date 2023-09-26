@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -33,14 +35,15 @@ public class Lotto {
     }
 
     private void checkDuplicationNumber(List<Integer> numbers){
+        Set<Integer> duplication = new HashSet<>();
         for(int number: numbers){
-            numbers.remove(number);
-            isCheckDuplication(numbers, number);
+            isCheckDuplication(duplication, number);
+            duplication.add(number);
         }
     }
 
-    private void isCheckDuplication(List<Integer> numbers, int number) {
-        if(numbers.contains(number)){
+    private void isCheckDuplication(Set<Integer> duplication, int number) {
+        if(duplication.contains(number)){
             throw new IllegalArgumentException("[ERROR] 로또번호를 중복선택할 수 없습니다.");
         }
     }
