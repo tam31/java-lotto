@@ -28,5 +28,16 @@ public class Lotto {
         }
     }
 
-    private
+    private void checkDuplicationNumber(List<Integer> numbers){
+        for(int number: numbers){
+            numbers.remove(number);
+            isCheckDuplication(numbers, number);
+        }
+    }
+
+    private void isCheckDuplication(List<Integer> numbers, int number) {
+        if(numbers.contains(number)){
+            throw new IllegalArgumentException("[ERROR] 로또번호를 중복선택할 수 없습니다.");
+        }
+    }
 }
