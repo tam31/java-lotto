@@ -12,8 +12,7 @@ public class Lotto {
         validate(numbers);
         limitNumberSize(numbers);
         checkDuplicationNumber(numbers);
-        sortNumbers(numbers);
-        this.numbers = numbers;
+        this.numbers = sortNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -48,7 +47,8 @@ public class Lotto {
         }
     }
 
-    private void sortNumbers(List<Integer> numbers){
+    private List<Integer> sortNumbers(List<Integer> numbers){
         Collections.sort(numbers);
+        return numbers;
     }
 }
