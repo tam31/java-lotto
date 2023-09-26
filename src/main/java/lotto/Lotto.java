@@ -16,5 +16,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void limitNumberSize(List<Integer> numbers){
+        for(int number: numbers){
+            isCheckExceptionNumber(number);
+        }
+    }
+
+    private static void isCheckExceptionNumber(int number) {
+        if(number <1 || number >45){
+            throw new IllegalArgumentException("[ERROR] 로또번호는 1~45까지여야 합니다.");
+        }
+    }
 }
