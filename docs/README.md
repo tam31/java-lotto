@@ -36,7 +36,7 @@
 
 ### Domain
 1. UserNumbers
-- [] 입력한 금액
+- [x] 입력한 금액
 - [] 구매한 로또 번호
 
 2. LottoNumber
