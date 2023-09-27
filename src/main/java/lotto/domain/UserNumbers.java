@@ -22,13 +22,13 @@ public class UserNumbers {
         return cash;
     }
 
-    private static void isCheckMoney(int cash) {
+    private void isCheckMoney(int cash) {
         if(cash %1000 !=0){
             throw new IllegalArgumentException();
         }
     }
 
-    private static int getChageMoney(String money) {
+    private int getChageMoney(String money) {
         return Integer.parseInt(money);
     }
 
