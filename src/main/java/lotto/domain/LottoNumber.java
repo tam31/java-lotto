@@ -9,4 +9,8 @@ public class LottoNumber {
     public LottoNumber(String lottoNumber) {
         this.lottoNumber = splitNumber(lottoNumber);
     }
+
+    public List<Integer> splitNumber(String lottoNumber){
+        String[] numbers = lottoNumber.split(",");
+    }
 }
