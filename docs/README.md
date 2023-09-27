@@ -37,6 +37,7 @@
 ### Domain
 1. UserNumbers
 - [x] 입력한 금액
+  - [x] 1000원 단위로 나누어지는지 확인
 - [] 구매한 로또 번호
 
 2. LottoNumber

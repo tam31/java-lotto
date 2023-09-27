@@ -9,7 +9,7 @@ public class LottoController {
     private static UserNumbers user;
     public void startGame(){
         InputView.inputMoney();
-        user = new UserNumbers();
-        user.inputMoney(Console.readLine());
+        user = new UserNumbers(Console.readLine());
+        System.out.println(user.getUserLottoMap());
     }
 }
