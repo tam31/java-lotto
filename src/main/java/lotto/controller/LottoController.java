@@ -16,6 +16,8 @@ public class LottoController {
         OutputView.lottoCount(user.getMoney(), user.getUserLottoMap());
         InputView.lottoNumber();
         lotto = new LottoNumber(Console.readLine());
+        InputView.bonesNumber();
+        lotto.putBonus(Console.readLine());
         System.out.println(user.getUserLottoMap());
     }
 }

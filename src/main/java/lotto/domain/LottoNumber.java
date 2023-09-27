@@ -21,6 +21,15 @@ public class LottoNumber {
         return bonus;
     }
 
+    public void putBonus(String number) {
+        this.bonus = checkBonusNumber(number);
+    }
+
+    public int checkBonusNumber(String number){
+        int bonusNumber = changeNumber(number);
+        return bonusNumber;
+    }
+    
     public List<Integer> splitNumber(String lottoNumber){
         String[] numbers = lottoNumber.split(",");
         List<Integer> lottoNumberList = addLottoNumber(numbers);
