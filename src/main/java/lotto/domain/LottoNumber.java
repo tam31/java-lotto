@@ -13,6 +13,14 @@ public class LottoNumber {
         this.lottoNumber = splitNumber(lottoNumber);
     }
 
+    public List<Integer> getLottoNumber() {
+        return lottoNumber;
+    }
+
+    public Integer getBonus() {
+        return bonus;
+    }
+
     public List<Integer> splitNumber(String lottoNumber){
         String[] numbers = lottoNumber.split(",");
         List<Integer> lottoNumberList = addLottoNumber(numbers);
