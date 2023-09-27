@@ -42,7 +42,7 @@
 
 2. LottoNumber
 - [x] 당첨번호 6개
-- [] 보너스 번호
+- [x] 보너스 번호
 
 ### View
 1. InputView

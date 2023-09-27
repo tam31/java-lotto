@@ -27,9 +27,16 @@ public class LottoNumber {
 
     public int checkBonusNumber(String number){
         int bonusNumber = changeNumber(number);
+        isNotDuplicationNumber(bonusNumber);
         return bonusNumber;
     }
-    
+
+    private void isNotDuplicationNumber(int bonusNumber) {
+        if(getLottoNumber().contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호가 중복입니다.");
+        }
+    }
+
     public List<Integer> splitNumber(String lottoNumber){
         String[] numbers = lottoNumber.split(",");
         List<Integer> lottoNumberList = addLottoNumber(numbers);
