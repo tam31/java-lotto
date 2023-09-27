@@ -9,7 +9,13 @@ public class OutputView {
 
     public static void lottoCount(int money,HashMap<List<Integer>, Integer> lottoNumbers){
         System.out.println(money/DIVID+LOTTO_COUNT_MESSAGE);
+        lottoNumber(lottoNumbers);
     }
 
+    public static void lottoNumber(HashMap<List<Integer>, Integer> lottoNumbers){
+        for (List<Integer> lotto: lottoNumbers.keySet()) {
+            System.out.println(lotto);
+        }
+    }
 
 }
