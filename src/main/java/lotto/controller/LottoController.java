@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.LottoNumber;
 import lotto.domain.Rank;
 import lotto.domain.UserNumbers;
+import lotto.service.LottoService;
 import lotto.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.OutputView;
@@ -13,15 +14,20 @@ public class LottoController {
 
     private static UserNumbers user;
     private static LottoNumber lotto;
+    private static LottoService service;
     public void startGame(){
         InputView.inputMoney();
-        user = new UserNumbers(Console.readLine());
-        OutputView.lottoCount(user.getMoney(), user.getUserLottoMap());
+        service = new LottoService();
+        user = new UserNumbers();
+        user.inputMoney(service.checkMoney(Console.readLine()));
+        user.pullLottoNumbers(service.pullLottoNumber(user.getMoney()));
+        OutputView.lottoCount(user.getMoney(), user.getPullLottoNumbers());
+        
         InputView.lottoNumber();
         lotto = new LottoNumber(Console.readLine());
         InputView.bonesNumber();
         lotto.putBonus(Console.readLine());
-        System.out.println(user.getUserLottoMap());
+        System.out.println(user.getPullLottoNumbers());
         resultLottoCount();
         OutputView.winLottoCount(user.getLottoCount());
         double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
@@ -30,7 +36,7 @@ public class LottoController {
 
     private static void resultLottoCount() {
         long sum = 0;
-        for(List<Integer> userLotto: user.getUserLottoMap().keySet()){
+        for(List<Integer> userLotto: user.getPullLottoNumbers().keySet()){
             int cnt = 0;
             boolean isBonuse = false;
             if(userLotto.contains(lotto.getBonus())){
