@@ -7,9 +7,15 @@ public class UserNumbers {
     private int money;
     private HashMap<List<Integer>,Integer> userLottoMap;
     private HashMap<Integer, Integer> lottoCount = new HashMap<>();
+    private Long benefitMoney;
 
+    public Long getBenefitMoney() {
+        return benefitMoney;
+    }
 
-
+    public void addBenefitMoney(Long benefitMoney) {
+        this.benefitMoney = benefitMoney;
+    }
 
     public UserNumbers(String money) {
         this.money = changeMoney(money);
