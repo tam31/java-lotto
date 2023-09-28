@@ -47,4 +47,10 @@ public class DataValidation {
         }
         return number;
     }
+
+    public void isNotDuplicationNumber(int bonus, List<Integer> lottoNumbers) {
+        if(lottoNumbers.contains(bonus)){
+            throw new IllegalArgumentException("[ERROR] 중복해서 쓸수 없습니다.");
+        }
+    }
 }
