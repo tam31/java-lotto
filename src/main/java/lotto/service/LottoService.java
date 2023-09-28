@@ -2,6 +2,7 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
+import lotto.domain.Rank;
 import lotto.validation.DataValidation;
 
 import java.util.HashMap;
@@ -41,5 +42,63 @@ public class LottoService {
         int bonus = dataValidation.changeNumber(bonusNumber);
         dataValidation.isNotDuplicationNumber(bonus, lottoNumbers);
         return bonus;
+    }
+
+
+    public HashMap<Rank, Integer> resultLottoCount(HashMap<List<Integer>, Integer> pullLottoNumbers,
+                                 List<Integer> lotto, int bonus,
+                                 HashMap<Rank, Integer> lottoCount) {
+
+        for(List<Integer> userLotto: pullLottoNumbers.keySet()){
+            boolean isBonuse = false;
+            isBonuse = isContainBonus(bonus, userLotto);
+            int count = checkContainCount(userLotto, lotto);
+
+            if(count ==4 && isBonuse){
+                lottoCount.put(Rank.SECOND_FIVE, lottoCount.get(Rank.SECOND_FIVE)+1);
+                continue;
+            }
+            if(isCompareRankToCount(count)){
+                Rank rank = compareRankToCount(count);
+                lottoCount.put(rank, lottoCount.get(rank)+1);
+            }
+        }
+        return lottoCount;
+    }
+
+    private boolean isContainBonus(int bonus, List<Integer> userLotto) {
+        if(userLotto.contains(bonus)){
+            return true;
+        }
+        return false;
+    }
+
+    private int checkContainCount(List<Integer> userLotto, List<Integer> lotto) {
+        int count = 0;
+        for(int number: lotto){
+            if(userLotto.contains(number)){
+                count +=1;
+            }
+        }
+        return count;
+    }
+
+    private boolean isCompareRankToCount(int lottoCount) {
+        for(Rank rank: Rank.values()){
+            if(rank.getCount()==lottoCount){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Rank compareRankToCount(int count) {
+        Rank answer = Rank.Three;
+        for(Rank rank: Rank.values()){
+            if(rank.getCount()==count){
+                return rank;
+            }
+        }
+        return answer;
     }
 }
