@@ -22,11 +22,13 @@ public class LottoController {
         user.inputMoney(service.checkMoney(Console.readLine()));
         user.pullLottoNumbers(service.pullLottoNumber(user.getMoney()));
         OutputView.lottoCount(user.getMoney(), user.getPullLottoNumbers());
-        
+
         InputView.lottoNumber();
-        lotto = new LottoNumber(Console.readLine());
+        List<Integer> isLottoNumbers = service.inputLottoNumber(Console.readLine());
         InputView.bonesNumber();
-        lotto.putBonus(Console.readLine());
+        int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
+
+
         System.out.println(user.getPullLottoNumbers());
         resultLottoCount();
         OutputView.winLottoCount(user.getLottoCount());
