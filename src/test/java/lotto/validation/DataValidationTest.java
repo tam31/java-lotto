@@ -15,13 +15,13 @@ class DataValidationTest {
         DataValidation dataValidation = new DataValidation();
         //when 이걸 실행하면
         assertThrows(IllegalArgumentException.class,
-                () -> dataValidation.isCheckMoney("abc"));
+                () -> dataValidation.isCheckNumber("abc"));
     }
     @DisplayName("입력받은 금액 형 변환")
     @Test
     public void changeMoney() throws Exception{
         DataValidation dataValidation = new DataValidation();
-        int money = dataValidation.changeMoney("1000");
+        int money = dataValidation.changeNumber("1000");
         Assertions.assertEquals(1000,money);
     }
 
