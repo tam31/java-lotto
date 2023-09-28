@@ -24,6 +24,7 @@ public class LottoController {
         System.out.println(user.getUserLottoMap());
         resultLottoCount();
         double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
+        OutputView.allBenefit(benefitNumber);
     }
 
     private static void resultLottoCount() {
