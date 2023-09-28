@@ -36,4 +36,10 @@ public class LottoService {
         Lotto lotto = new Lotto(number);
         return lotto.getNumbers();
     }
+
+    public int inputBonuse(String bonusNumber, List<Integer> lottoNumbers) {
+        int bonus = dataValidation.changeNumber(bonusNumber);
+        dataValidation.isNotDuplicationNumber(bonus, lottoNumbers);
+        return bonus;
+    }
 }
