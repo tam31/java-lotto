@@ -5,21 +5,11 @@ import java.util.List;
 
 public class UserNumbers {
     private int money;
-    private HashMap<List<Integer>,Integer> userLottoMap;
+    private HashMap<List<Integer>,Integer> pullLottoNumbers;
     private HashMap<Rank, Integer> lottoCount = new HashMap<>();
     private Long benefitMoney;
 
-    public Long getBenefitMoney() {
-        return benefitMoney;
-    }
-
-    public void addBenefitMoney(Long benefitMoney) {
-        this.benefitMoney = benefitMoney;
-    }
-
-    public UserNumbers(String money) {
-        this.money = changeMoney(money);
-        this.userLottoMap = inputLotto();
+    public UserNumbers() {
         basicResultFrame();
     }
 
@@ -33,10 +23,15 @@ public class UserNumbers {
         return money;
     }
 
-    public int changeMoney(String money){
-        int cash = getChageMoney(money);
-        isCheckMoney(cash);
-        return cash;
+    public void inputMoney(int money){
+        this.money = money;
+    }
+    public HashMap<List<Integer>, Integer> getPullLottoNumbers() {
+        return pullLottoNumbers;
+    }
+
+    public void pullLottoNumbers(HashMap<List<Integer>, Integer> lottoNumber){
+        pullLottoNumbers = lottoNumber;
     }
 
     public HashMap<Rank, Integer> getLottoCount() {
@@ -47,23 +42,12 @@ public class UserNumbers {
         lottoCount.put(rank, lottoCount.get(rank)+1);
     }
 
-    private void isCheckMoney(int cash) {
-        if(cash %1000 !=0){
-            throw new IllegalArgumentException();
-        }
+    public Long getBenefitMoney() {
+        return benefitMoney;
     }
 
-    private int getChageMoney(String money) {
-        return Integer.parseInt(money);
+    public void addBenefitMoney(Long benefitMoney) {
+        this.benefitMoney = benefitMoney;
     }
 
-
-    public HashMap<List<Integer>, Integer> getUserLottoMap() {
-        return userLottoMap;
-    }
-
-    public HashMap<List<Integer>,Integer> inputLotto(){
-        UserLotto userLotto = new UserLotto();
-        return userLotto.getLottoNumber(money);
-    }
 }
