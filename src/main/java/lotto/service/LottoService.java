@@ -101,4 +101,17 @@ public class LottoService {
         }
         return answer;
     }
+
+    public double sumLottoBenefit(HashMap<Rank, Integer> rankLottoCount, int buyMoney) {
+        double sumMoney = 0;
+        for(Rank rank: Rank.values()){
+            sumMoney+= (rankLottoCount.get(rank)*rank.getMoney());
+        }
+        sumMoney = getBenefit(sumMoney,buyMoney);
+        return sumMoney;
+    }
+
+    private double getBenefit(double sumMoney,int buyMoney) {
+        return (sumMoney/buyMoney)*100;
+    }
 }
