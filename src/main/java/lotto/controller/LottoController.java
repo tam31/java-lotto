@@ -32,14 +32,9 @@ public class LottoController {
         HashMap<Rank, Integer> rankLottoCount = service.resultLottoCount(user.getPullLottoNumbers(), lotto.getLottoNumber(), lotto.getBonus(), user.getLottoCount());
         user.isLottoCount(rankLottoCount);
         OutputView.winLottoCount(user.getLottoCount());
-//        resultLottoCount();
-//        OutputView.winLottoCount(user.getLottoCount());
-//        double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
-//        OutputView.allBenefit(benefitNumber);
+
+        user.addBenefitMoney(service.sumLottoBenefit(rankLottoCount,user.getMoney()));
+        OutputView.allBenefit(user.getBenefitMoney());
     }
 
-    public double benefitMoney(long sumMoney, int buyMoney){
-        double result = ((double) sumMoney / buyMoney)*100;
-        return result;
-    }
 }
