@@ -32,15 +32,26 @@ public class LottoController {
         long sum = 0;
         for(List<Integer> userLotto: user.getUserLottoMap().keySet()){
             int cnt = 0;
+            boolean isBonuse = false;
+            if(userLotto.contains(lotto.getBonus())){
+                isBonuse = true;
+            }
+
             for(int number: lotto.getLottoNumber()){
                 if(userLotto.contains(number)){
                     cnt +=1;
                 }
             }
             for(Rank rank: Rank.values()){
-                if(rank.getCount()==cnt){
-                    user.addLottoCount(cnt);
+                if(cnt ==4 && isBonuse){
+                    user.addLottoCount(Rank.SECOND_FIVE);
+                    sum+= Rank.SECOND_FIVE.getMoney();
+                    break;
+                }
+                else if(rank.getCount()==cnt){
+                    user.addLottoCount(rank);
                     sum+= rank.getMoney();
+                    break;
                 }
             }
 
