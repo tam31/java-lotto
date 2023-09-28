@@ -37,6 +37,10 @@ public class UserNumbers {
         return lottoCount;
     }
 
+    public void addLottoCount(int number){
+        lottoCount.put(number, lottoCount.get(number)+1);
+    }
+
     private void isCheckMoney(int cash) {
         if(cash %1000 !=0){
             throw new IllegalArgumentException();

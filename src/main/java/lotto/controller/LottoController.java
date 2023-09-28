@@ -1,10 +1,13 @@
 package lotto.controller;
 
 import lotto.domain.LottoNumber;
+import lotto.domain.Rank;
 import lotto.domain.UserNumbers;
 import lotto.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
 
@@ -19,5 +22,26 @@ public class LottoController {
         InputView.bonesNumber();
         lotto.putBonus(Console.readLine());
         System.out.println(user.getUserLottoMap());
+        resultLottoCount();
+    }
+
+    private static void resultLottoCount() {
+        int sum = 0;
+        for(List<Integer> userLotto: user.getUserLottoMap().keySet()){
+            int cnt = 0;
+            for(int number: lotto.getLottoNumber()){
+                if(userLotto.contains(number)){
+                    cnt +=1;
+                }
+            }
+            for(Rank rank: Rank.values()){
+                if(rank.getCount()==cnt){
+                    user.addLottoCount(cnt);
+                    sum+= rank.getMoney();
+                }
+            }
+
+        }
+        System.out.println(user.getLottoCount());
     }
 }
