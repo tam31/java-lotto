@@ -16,7 +16,7 @@ public class LottoService {
     private static HashMap<List<Integer>,Integer> lottoList = new HashMap<>();
     DataValidation dataValidation = new DataValidation();
     public int checkMoney(String money){
-        return dataValidation.isCheckMoney(money);
+        return dataValidation.isCheckNumber(money);
     }
     public HashMap<List<Integer>,Integer> pullLottoNumber(int money){
         for(int i=0; i<money/DIVIDE; i++){
@@ -29,5 +29,11 @@ public class LottoService {
 
     private List<Integer> getNumbers() {
         return Randoms.pickUniqueNumbersInRange(START, END, COUNT);
+    }
+
+    public List<Integer> inputLottoNumber(String numbers){
+        List<Integer> number = dataValidation.isCheckNumbers(numbers);
+        Lotto lotto = new Lotto(number);
+        return lotto.getNumbers();
     }
 }
