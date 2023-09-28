@@ -23,10 +23,11 @@ public class LottoController {
         lotto.putBonus(Console.readLine());
         System.out.println(user.getUserLottoMap());
         resultLottoCount();
+        double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
     }
 
     private static void resultLottoCount() {
-        int sum = 0;
+        long sum = 0;
         for(List<Integer> userLotto: user.getUserLottoMap().keySet()){
             int cnt = 0;
             for(int number: lotto.getLottoNumber()){
@@ -43,5 +44,11 @@ public class LottoController {
 
         }
         System.out.println(user.getLottoCount());
+        user.addBenefitMoney(sum);
+    }
+
+    public double benefitMoney(long sumMoney, int buyMoney){
+        double result = ((double) sumMoney / buyMoney)*100;
+        return result;
     }
 }
