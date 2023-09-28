@@ -47,9 +47,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 숫자가아닐경우() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 중복발생() {
+        assertSimpleTest(() -> {
+            runException("1000","1,1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 올바른형식이아닐경우() {
+        assertSimpleTest(() -> {
+            runException("1000","1 1 2 3");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 나눌수있는단위가아닐경우() {
+        assertSimpleTest(() -> {
+            runException("500");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
