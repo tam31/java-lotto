@@ -23,13 +23,13 @@ public class OutputView {
         }
     }
 
-    public static void summaryLotto(HashMap<Integer, Integer> lottoCount){
+    public static void summaryLotto(HashMap<Rank, Integer> lottoCount){
         System.out.println(SUMMARY_MESSAGE);
         System.out.println("---");
         winLottoCount(lottoCount);
     }
 
-    public static void winLottoCount(HashMap<Integer, Integer> lottoCount) {
+    public static void winLottoCount(HashMap<Rank, Integer> lottoCount) {
         for(Rank rank:Rank.values()){
             System.out.printf(LOTTO_RESULT_COUNT_MESSAGE,rank.getCount(),rank.getViewMoney(),lottoCount.get(rank.getCount()));
         }

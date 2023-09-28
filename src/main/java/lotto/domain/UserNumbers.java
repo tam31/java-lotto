@@ -6,7 +6,7 @@ import java.util.List;
 public class UserNumbers {
     private int money;
     private HashMap<List<Integer>,Integer> userLottoMap;
-    private HashMap<Integer, Integer> lottoCount = new HashMap<>();
+    private HashMap<Rank, Integer> lottoCount = new HashMap<>();
     private Long benefitMoney;
 
     public Long getBenefitMoney() {
@@ -25,7 +25,7 @@ public class UserNumbers {
 
     private void basicResultFrame() {
         for(Rank rank:Rank.values()){
-            lottoCount.put(rank.getCount(),0);
+            lottoCount.put(rank,0);
         }
     }
 
@@ -39,12 +39,12 @@ public class UserNumbers {
         return cash;
     }
 
-    public HashMap<Integer, Integer> getLottoCount() {
+    public HashMap<Rank, Integer> getLottoCount() {
         return lottoCount;
     }
 
-    public void addLottoCount(int number){
-        lottoCount.put(number, lottoCount.get(number)+1);
+    public void addLottoCount(Rank rank){
+        lottoCount.put(rank, lottoCount.get(rank)+1);
     }
 
     private void isCheckMoney(int cash) {
