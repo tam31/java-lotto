@@ -27,7 +27,7 @@ public class LottoController {
         List<Integer> isLottoNumbers = service.inputLottoNumber(Console.readLine());
         InputView.bonesNumber();
         int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
-
+        lotto = new LottoNumber(isLottoNumbers, bonusNumber);
 
         System.out.println(user.getPullLottoNumbers());
         resultLottoCount();
