@@ -4,8 +4,8 @@ public enum Rank {
     Three(3,5000l,"5,000"),
     Four(4,50000l,"50,000"),
     Five(5, 1500000l,"1,500,000"),
-    Six(6, 30000000l,"30,000,000"),
-    Seven(7, 2000000000l,"2,000,000,000");
+    Six(5, 30000000l,"30,000,000"),
+    Seven(6, 2000000000l,"2,000,000,000");
 
     final private int count;
     final private Long money;
