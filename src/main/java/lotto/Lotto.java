@@ -18,7 +18,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 선택할 수 있는 로또의 숫자는 6개여야 합니다.");
+            System.out.println("[ERROR] 선택할 수 있는 로또의 숫자는 6개여야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -30,7 +31,8 @@ public class Lotto {
 
     private void isCheckExceptionNumber(int number) {
         if(number <1 || number >45){
-            throw new IllegalArgumentException("[ERROR] 로또번호는 1~45까지여야 합니다.");
+            System.out.println("[ERROR] 로또번호는 1~45까지여야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -44,7 +46,8 @@ public class Lotto {
 
     private void isCheckDuplication(Set<Integer> duplication, int number) {
         if(duplication.contains(number)){
-            throw new IllegalArgumentException("[ERROR] 로또번호를 중복선택할 수 없습니다.");
+            System.out.println("[ERROR] 로또번호를 중복선택할 수 없습니다.");
+            throw new IllegalArgumentException();
         }
     }
 
