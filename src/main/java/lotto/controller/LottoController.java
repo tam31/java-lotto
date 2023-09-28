@@ -17,24 +17,28 @@ public class LottoController {
     private static LottoNumber lotto;
     private static LottoService service = new LottoService();
     public void startGame(){
-        InputView.inputMoney();
-        user = new UserNumbers();
-        user.inputMoney(service.checkMoney(Console.readLine()));
-        user.pullLottoNumbers(service.pullLottoNumber(user.getMoney()));
-        OutputView.lottoCount(user.getMoney(), user.getPullLottoNumbers());
+        try {
+            InputView.inputMoney();
+            user = new UserNumbers();
+            user.inputMoney(service.checkMoney(Console.readLine()));
+            user.pullLottoNumbers(service.pullLottoNumber(user.getMoney()));
+            OutputView.lottoCount(user.getMoney(), user.getPullLottoNumbers());
 
-        InputView.lottoNumber();
-        List<Integer> isLottoNumbers = service.inputLottoNumber(Console.readLine());
-        InputView.bonesNumber();
-        int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
-        lotto = new LottoNumber(isLottoNumbers, bonusNumber);
+            InputView.lottoNumber();
+            List<Integer> isLottoNumbers = service.inputLottoNumber(Console.readLine());
+            InputView.bonesNumber();
+            int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
+            lotto = new LottoNumber(isLottoNumbers, bonusNumber);
 
-        HashMap<Rank, Integer> rankLottoCount = service.resultLottoCount(user.getPullLottoNumbers(), lotto.getLottoNumber(), lotto.getBonus(), user.getLottoCount());
-        user.isLottoCount(rankLottoCount);
-        OutputView.winLottoCount(user.getLottoCount());
+            HashMap<Rank, Integer> rankLottoCount = service.resultLottoCount(user.getPullLottoNumbers(), lotto.getLottoNumber(), lotto.getBonus(), user.getLottoCount());
+            user.isLottoCount(rankLottoCount);
+            OutputView.winLottoCount(user.getLottoCount());
 
-        user.addBenefitMoney(service.sumLottoBenefit(rankLottoCount,user.getMoney()));
-        OutputView.allBenefit(user.getBenefitMoney());
+            user.addBenefitMoney(service.sumLottoBenefit(rankLottoCount, user.getMoney()));
+            OutputView.allBenefit(user.getBenefitMoney());
+        }catch (IllegalArgumentException e){
+
+        }
     }
 
 }
