@@ -8,6 +8,7 @@ import lotto.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.OutputView;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LottoController {
@@ -28,43 +29,13 @@ public class LottoController {
         int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
         lotto = new LottoNumber(isLottoNumbers, bonusNumber);
 
-
+        HashMap<Rank, Integer> rankLottoCount = service.resultLottoCount(user.getPullLottoNumbers(), lotto.getLottoNumber(), lotto.getBonus(), user.getLottoCount());
+        user.isLottoCount(rankLottoCount);
+        OutputView.winLottoCount(user.getLottoCount());
 //        resultLottoCount();
 //        OutputView.winLottoCount(user.getLottoCount());
 //        double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
 //        OutputView.allBenefit(benefitNumber);
-    }
-
-    private static void resultLottoCount() {
-        long sum = 0;
-        for(List<Integer> userLotto: user.getPullLottoNumbers().keySet()){
-            int cnt = 0;
-            boolean isBonuse = false;
-            if(userLotto.contains(lotto.getBonus())){
-                isBonuse = true;
-            }
-
-            for(int number: lotto.getLottoNumber()){
-                if(userLotto.contains(number)){
-                    cnt +=1;
-                }
-            }
-            for(Rank rank: Rank.values()){
-                if(cnt ==4 && isBonuse){
-                    user.addLottoCount(Rank.SECOND_FIVE);
-                    sum+= Rank.SECOND_FIVE.getMoney();
-                    break;
-                }
-                else if(rank.getCount()==cnt){
-                    user.addLottoCount(rank);
-                    sum+= rank.getMoney();
-                    break;
-                }
-            }
-
-        }
-        System.out.println(user.getLottoCount());
-        user.addBenefitMoney(sum);
     }
 
     public double benefitMoney(long sumMoney, int buyMoney){
