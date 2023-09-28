@@ -14,10 +14,9 @@ public class LottoController {
 
     private static UserNumbers user;
     private static LottoNumber lotto;
-    private static LottoService service;
+    private static LottoService service = new LottoService();
     public void startGame(){
         InputView.inputMoney();
-        service = new LottoService();
         user = new UserNumbers();
         user.inputMoney(service.checkMoney(Console.readLine()));
         user.pullLottoNumbers(service.pullLottoNumber(user.getMoney()));
@@ -29,11 +28,11 @@ public class LottoController {
         int bonusNumber = service.inputBonuse(Console.readLine(), isLottoNumbers);
         lotto = new LottoNumber(isLottoNumbers, bonusNumber);
 
-        System.out.println(user.getPullLottoNumbers());
-        resultLottoCount();
-        OutputView.winLottoCount(user.getLottoCount());
-        double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
-        OutputView.allBenefit(benefitNumber);
+
+//        resultLottoCount();
+//        OutputView.winLottoCount(user.getLottoCount());
+//        double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
+//        OutputView.allBenefit(benefitNumber);
     }
 
     private static void resultLottoCount() {
