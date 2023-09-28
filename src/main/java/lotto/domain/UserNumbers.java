@@ -7,7 +7,7 @@ public class UserNumbers {
     private int money;
     private HashMap<List<Integer>,Integer> pullLottoNumbers;
     private HashMap<Rank, Integer> lottoCount = new HashMap<>();
-    private Long benefitMoney;
+    private double benefitMoney;
 
     public UserNumbers() {
         basicResultFrame();
@@ -38,15 +38,16 @@ public class UserNumbers {
         return lottoCount;
     }
 
-    public void addLottoCount(Rank rank){
-        lottoCount.put(rank, lottoCount.get(rank)+1);
+    public void isLottoCount(HashMap<Rank, Integer> lottoCount) {
+        this.lottoCount = lottoCount;
     }
 
-    public Long getBenefitMoney() {
+
+    public double getBenefitMoney() {
         return benefitMoney;
     }
 
-    public void addBenefitMoney(Long benefitMoney) {
+    public void addBenefitMoney(double benefitMoney) {
         this.benefitMoney = benefitMoney;
     }
 
