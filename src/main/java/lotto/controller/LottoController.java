@@ -23,6 +23,7 @@ public class LottoController {
         lotto.putBonus(Console.readLine());
         System.out.println(user.getUserLottoMap());
         resultLottoCount();
+        OutputView.winLottoCount(user.getLottoCount());
         double benefitNumber=benefitMoney(user.getBenefitMoney(), user.getMoney());
         OutputView.allBenefit(benefitNumber);
     }
