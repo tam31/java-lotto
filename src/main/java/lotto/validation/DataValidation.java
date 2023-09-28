@@ -11,7 +11,6 @@ public class DataValidation {
             changeNumber(number);
         }catch (NumberFormatException n){
             System.out.println("[ERROR] 숫자을 입력하세요");
-            throw new IllegalArgumentException();
         }
     }
 
@@ -40,6 +39,7 @@ public class DataValidation {
         }
     }
 
+
     private List<Integer> changeNumbers(String[] strNumbers) {
         List<Integer> number = new ArrayList<>();
         for(String checkNumber:strNumbers){
@@ -51,7 +51,6 @@ public class DataValidation {
     public void isNotDuplicationNumber(int bonus, List<Integer> lottoNumbers) {
         if(lottoNumbers.contains(bonus)){
             System.out.println("[ERROR] 중복해서 쓸수 없습니다.");
-            throw new IllegalArgumentException();
         }
     }
 }
