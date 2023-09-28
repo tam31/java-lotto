@@ -6,10 +6,21 @@ import java.util.List;
 public class UserNumbers {
     private int money;
     private HashMap<List<Integer>,Integer> userLottoMap;
+    private HashMap<Integer, Integer> lottoCount = new HashMap<>();
+
+
+
 
     public UserNumbers(String money) {
         this.money = changeMoney(money);
         this.userLottoMap = inputLotto();
+        basicResultFrame();
+    }
+
+    private void basicResultFrame() {
+        for(Rank rank:Rank.values()){
+            lottoCount.put(rank.getCount(),0);
+        }
     }
 
     public int getMoney() {
@@ -20,6 +31,10 @@ public class UserNumbers {
         int cash = getChageMoney(money);
         isCheckMoney(cash);
         return cash;
+    }
+
+    public HashMap<Integer, Integer> getLottoCount() {
+        return lottoCount;
     }
 
     private void isCheckMoney(int cash) {
