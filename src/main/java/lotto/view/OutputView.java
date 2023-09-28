@@ -31,7 +31,7 @@ public class OutputView {
 
     public static void winLottoCount(HashMap<Rank, Integer> lottoCount) {
         for(Rank rank:Rank.values()){
-            System.out.printf(LOTTO_RESULT_COUNT_MESSAGE,rank.getCount(),rank.getViewMoney(),lottoCount.get(rank.getCount()));
+            System.out.printf(LOTTO_RESULT_COUNT_MESSAGE,rank.getCount(),rank.getViewMoney(),lottoCount.get(rank));
         }
 
     }
