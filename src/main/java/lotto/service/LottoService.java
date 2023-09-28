@@ -17,7 +17,10 @@ public class LottoService {
     private static HashMap<List<Integer>,Integer> lottoList = new HashMap<>();
     DataValidation dataValidation = new DataValidation();
     public int checkMoney(String money){
-        return dataValidation.isCheckNumber(money);
+        dataValidation.isCheckNumber(money);
+        int changeMoney = dataValidation.changeNumber(money);
+        dataValidation.checkMoney(changeMoney);
+        return changeMoney;
     }
     public HashMap<List<Integer>,Integer> pullLottoNumber(int money){
         for(int i=0; i<money/DIVIDE; i++){
