@@ -8,7 +8,7 @@ import java.util.List;
 public class OutputView {
     private final static int DIVID = 1000;
     private final static String LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
-    private final static String SUMMARY_MESSAGE = "당첨통계.";
+    private final static String SUMMARY_MESSAGE = "당첨통계";
     private final static String LOTTO_RESULT_COUNT_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private final static String LOTTO_RESULT_SECOND_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private final static String LOTTO_RESULT_BENEFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
@@ -34,6 +34,7 @@ public class OutputView {
         for(Rank rank:Rank.values()){
             if(rank==Rank.SECOND_FIVE){
                 System.out.printf(LOTTO_RESULT_SECOND_MESSAGE,rank.getCount(),rank.getViewMoney(),lottoCount.get(rank));
+                continue;
             }
             System.out.printf(LOTTO_RESULT_COUNT_MESSAGE,rank.getCount(),rank.getViewMoney(),lottoCount.get(rank));
         }
