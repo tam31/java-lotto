@@ -1,7 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.validation.Lotto;
 import lotto.domain.Rank;
 import lotto.validation.DataValidation;
 

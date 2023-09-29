@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoNumber {
